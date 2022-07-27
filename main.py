@@ -17,40 +17,47 @@ class Liquid(Substance):
     def boil(self):
         """Действие: влияние температуры"""
         if self.temperature >= 100:
-            print(f"[INFO:{self.name}] При температуре {self.temperature}°C я буду кипеть")
+            print(f"[INFO:{self.name}] При температуре {self.temperature}°C я буду кипеть.")
         elif self.temperature <= 0:
-            print(f"[INFO:{self.name}] При температуре {self.temperature}°C я превращусь в лёд")
+            print(f"[INFO:{self.name}] При температуре {self.temperature}°C я превращусь в лёд.")
         else:
-            print(f"[INFO:{self.name}] При температуре {self.temperature}°C я чисто на расслабоне,на чиле")
-
-
+            print(f"[INFO:{self.name}] При температуре {self.temperature}°C я чисто на расслабоне,на чиле.")
 
     def info(self):
         print(f"Я - {Substance.ruClassName}")
-        print(f"Чтобы быть более точным: Я - {Liquid.ruClassName}")
-        print(f"Мое название - {self.name}")
-        print(f"Мой объем измеряется в  - {self.volume}")
-        print(f"Моя плотность - {self.density}")
+        print(f"Чтобы быть более точным: Я - {Liquid.ruClassName}.")
+        print(f"Мое название - {self.name}.")
+        print(f"Мой объем измеряется в  - {self.volume}.")
+        print(f"Моя плотность - {self.density}.")
 
 
 class Solid(Substance):
     ruClassName = "Твердое вещество"
 
-    def __init__(self, volume, name, durability):
+    def __init__(self, volume, name, durability, ink):
         super().__init__(volume)
         self.name = name
         self.durability = durability
+        self.ink=ink
 
     def write(self):
-        return "записывать"
+        if self.ink > 0:
+            print(f"[INFO: {self.name}].Во мне есть {pen.ink}% чернил.Я могу писать.")
+        if self.ink < 0:
+            print(f"[INFO: {self.name}].Я могу писать.")
+        if self.ink == 0:
+            print(f"[INFO: {self.name}].Во мне не осталось чернил. Я не могу писать.")
+
+    def rewind(self):
+        print(f"[INFO: {self.name}]. Могу перематывать кассету,экономя батарейки в плеере")
 
     def info(self):
         print(f"Я - {Substance.ruClassName}")
-        print(f"Чтобы быть более точным: Я - {Solid.ruClassName}")
-        print(f"Мое название - {self.name}")
-        print(f"Мой объем измеряется в  - {self.volume}")
-        print(f"Моя прочность - {self.durability}")
-        print(f"Я могу совершать действие : {self.write()}")
+        print(f"Чтобы быть более точным: Я - {Solid.ruClassName}.")
+        print(f"Мое название - {self.name}.")
+        print(f"Мой объем измеряется в  - {self.volume}.")
+        print(f"Моя прочность - {self.durability}.")
+
 
 
 class Gas(Substance):
@@ -61,28 +68,45 @@ class Gas(Substance):
         self.name = name
         self.autoignition_temperature = autoignition_temperature
 
+
+
     def info(self):
         print(f"Я - {Substance.ruClassName}")
-        print(f"Чтобы быть более точным: Я - {Gas.ruClassName}")
-        print(f"Мое название - {self.name}")
-        print(f"Мой объем измеряется в  - {self.volume}")
-        print(f"Моя температура самовозгорания - {self.autoignition_temperature}")
+        print(f"Чтобы быть более точным: Я - {Gas.ruClassName}.")
+        print(f"Мое название - {self.name}.")
+        print(f"Мой объем измеряется в  - {self.volume}.")
+        print(f"Моя температура самовозгорания - {self.autoignition_temperature}.")
 
 
-cola = Liquid("мл и литр", "Coca-Cola", "1040 кг\м³", 6)
+cola = Liquid("миллилитрах", "'Coca-Cola'", "1040 кг\м³", 6)
 cola.info()
-water = Liquid("мл и литр", "Вода", "997 кг\м³", -1)
+
+print("#" * 25)
+water = Liquid("миллилитрах", "'Вода'", "997 кг\м³", -1)
 water.info()
-soda = Liquid("мл и литр", "Напитки из Черноголовки", "1030 кг\м³",101)
+
+print("#" * 25)
+soda = Liquid("миллилитрах", "'Напитки из Черноголовки'", "1030 кг\м³", 101)
 soda.info()
+
 print("#" * 25)
-pencil = Solid("cм³", "Карандаш", "низкая")
+pencil = Solid("cм³", "'Карандаш'", "низкая",-1)
 pencil.info()
+
+
+
+pen=Solid("cм³", "'Ручка'", "низкая",15)
+
+pen.info()
 print("#" * 25)
-crap = Gas("м³", "Пердеж", "650°C")
+crap = Gas("м³", "'Пердеж'", "650°C")
 crap.info()
 print("#" * 25)
 
 cola.boil()
 water.boil()
 soda.boil()
+pencil.rewind()
+pencil.write()
+pen.write()
+pen.rewind()
