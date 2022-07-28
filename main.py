@@ -1,6 +1,7 @@
 class Substance:
     ruClassName = "Вещество"
 
+
     def __init__(self, volume):
         self.volume = volume
 
@@ -38,7 +39,7 @@ class Solid(Substance):
         super().__init__(volume)
         self.name = name
         self.durability = durability
-        self.ink=ink
+        self.ink = ink
 
     def write(self):
         if self.ink > 0:
@@ -59,7 +60,6 @@ class Solid(Substance):
         print(f"Моя прочность - {self.durability}.")
 
 
-
 class Gas(Substance):
     ruClassName = "Газообразное вещество"
 
@@ -67,8 +67,6 @@ class Gas(Substance):
         super().__init__(volume)
         self.name = name
         self.autoignition_temperature = autoignition_temperature
-
-
 
     def info(self):
         print(f"Я - {Substance.ruClassName}")
@@ -78,24 +76,23 @@ class Gas(Substance):
         print(f"Моя температура самовозгорания - {self.autoignition_temperature}.")
 
 
+
 cola = Liquid("миллилитрах", "'Coca-Cola'", "1040 кг\м³", 6)
 cola.info()
 
 print("#" * 25)
 water = Liquid("миллилитрах", "'Вода'", "997 кг\м³", -1)
 water.info()
-
+vodka=Liquid()
 print("#" * 25)
 soda = Liquid("миллилитрах", "'Напитки из Черноголовки'", "1030 кг\м³", 101)
 soda.info()
 
 print("#" * 25)
-pencil = Solid("cм³", "'Карандаш'", "низкая",-1)
+pencil = Solid("cм³", "'Карандаш'", "низкая", -1)
 pencil.info()
 
-
-
-pen=Solid("cм³", "'Ручка'", "низкая",15)
+pen = Solid("cм³", "'Ручка'", "низкая", 15)
 
 pen.info()
 print("#" * 25)
@@ -103,10 +100,45 @@ crap = Gas("м³", "'Пердеж'", "650°C")
 crap.info()
 print("#" * 25)
 
-cola.boil()
-water.boil()
-soda.boil()
-pencil.rewind()
-pencil.write()
-pen.write()
-pen.rewind()
+# cola.boil()
+# water.boil()
+# soda.boil()
+# pencil.rewind()
+# pencil.write()
+# pen.write()
+# pen.rewind()
+sostoyanie = {"жидкое": Liquid,
+              "твердое": Solid,
+              "газообразное": Gas
+              }
+# def anketa():
+while True:
+    print("Введите тип вещества: жидкое, твердое, газообразное")
+    substance = input(">>>")
+
+    if substance in sostoyanie:
+        break
+    else:
+        continue
+if substance == "жидкое":
+    substance=Liquid
+    print("Введите в чем измеряется мой объем: ")
+    volume = input(">>>")
+
+    print("Введите название вещества:")
+    name = input(">>>")
+    print("Моя плотность равна : кг\м³")
+    density = input(">>>")
+    print("Моя температура сейчас: ")
+    temperature = input(">>>")
+    new_liquid_ex = substance(volume, name, density + ' ' + 'кг\м³', int(temperature))
+    new_liquid_ex.info()
+    new_liquid_ex.boil()
+elif substance == "твердое":
+        substance = Solid
+
+
+else:
+    substance = Gas
+
+
