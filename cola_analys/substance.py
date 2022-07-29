@@ -1,0 +1,5 @@
+class Substance:
+    ruClassName = "Вещество"
+
+
+
