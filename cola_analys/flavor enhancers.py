@@ -24,6 +24,9 @@ class Caramel(Flavor_enhancers):
 class Natrium(Flavor_enhancers):
     ruClassName = "Бензонат натрия"
 
+class Nature_flavors(Flavor_enhancers):
+    ruClassName = "Натуральные ароматизаторы"
+
 
 flavors=Flavor_enhancers()
 
