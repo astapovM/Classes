@@ -1,2 +1,0 @@
-class Sugar():
-    ruClassName="Сахар"
