@@ -1,2 +1,0 @@
-class Gas:
-    ruClassName = "Газ"
