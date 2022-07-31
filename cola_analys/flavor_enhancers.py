@@ -1,9 +1,16 @@
-class Flavor_enhancers:
+
+
+
+class Flavor_enhancers():
     ruClassName = "Усилители вкуса"
 
     def info_flavor_enhancers(self):
         return (f"Мы - {Flavor_enhancers.ruClassName}\nВ состав входят:\n{Sugar.ruClassName},"
-                f"{Sugar_surrogate.ruClassName},{Caramel.ruClassName},{Phosphorus.ruClassName},{Natrium.ruClassName}")
+                f"{Sugar_surrogate.ruClassName},{Caramel.ruClassName},{Phosphorus.ruClassName},{Natrium.ruClassName}\n"
+                f"С нашей помощью вода получается с различными вкусами")
+    def info_sostav(self):
+        return f"{Sugar.ruClassName},{Phosphorus.ruClassName},{Sugar_surrogate.ruClassName},{Caramel.ruClassName}," \
+               f"{Natrium.ruClassName},{Nature_flavors.ruClassName}"
 
 
 class Sugar(Flavor_enhancers):
@@ -28,6 +35,4 @@ class Nature_flavors(Flavor_enhancers):
     ruClassName = "Натуральные ароматизаторы"
 
 
-flavors=Flavor_enhancers()
 
-print(flavors.info_flavor_enhancers())
